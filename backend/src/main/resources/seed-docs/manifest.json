@@ -1,0 +1,8 @@
+[
+  { "file": "employee-handbook.pdf",        "title": "Employee Handbook",                "allowedRoles": ["EMPLOYEE"] },
+  { "file": "it-security-policy.md",        "title": "IT Security Policy",               "allowedRoles": ["EMPLOYEE"] },
+  { "file": "travel-expense-policy.html",   "title": "Travel and Expense Policy",        "allowedRoles": ["EMPLOYEE", "FINANCE"] },
+  { "file": "engineering-onboarding.md",    "title": "Engineering Onboarding Guide",     "allowedRoles": ["ENGINEERING"] },
+  { "file": "compensation-guidelines.md",   "title": "Compensation Guidelines",          "allowedRoles": ["HR"] },
+  { "file": "quarterly-close-procedures.md","title": "Quarterly Close Procedures",       "allowedRoles": ["FINANCE"] }
+]

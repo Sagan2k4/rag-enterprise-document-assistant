@@ -1,0 +1,133 @@
+[
+  {
+    "id": "handbook-annual-leave",
+    "question": "How many days of paid annual leave do full-time employees get?",
+    "asRole": "EMPLOYEE",
+    "expectedDocuments": ["Employee Handbook"],
+    "expectedKeywords": ["20"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "handbook-carryover",
+    "question": "Can I carry unused vacation days into next year?",
+    "asRole": "EMPLOYEE",
+    "expectedDocuments": ["Employee Handbook"],
+    "expectedKeywords": ["5", "March 31"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "handbook-parental",
+    "question": "What is the parental leave for a primary caregiver?",
+    "asRole": "EMPLOYEE",
+    "expectedDocuments": ["Employee Handbook"],
+    "expectedKeywords": ["16 weeks"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "handbook-401k",
+    "question": "Does the company match 401(k) contributions?",
+    "asRole": "EMPLOYEE",
+    "expectedDocuments": ["Employee Handbook"],
+    "expectedKeywords": ["4%"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "handbook-office-days",
+    "question": "Which days am I expected to be in the office?",
+    "asRole": "EMPLOYEE",
+    "expectedDocuments": ["Employee Handbook"],
+    "expectedKeywords": ["Tuesday", "Thursday"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "security-password",
+    "question": "What is the minimum password length?",
+    "asRole": "EMPLOYEE",
+    "expectedDocuments": ["IT Security Policy"],
+    "expectedKeywords": ["14"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "security-phishing",
+    "question": "I clicked a suspicious link in an email. Who do I tell and how quickly?",
+    "asRole": "EMPLOYEE",
+    "expectedDocuments": ["IT Security Policy"],
+    "expectedKeywords": ["security@northwind.example", "1 hour"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "expense-hotel-cap",
+    "question": "What is the hotel limit per night in London?",
+    "asRole": "EMPLOYEE",
+    "expectedDocuments": ["Travel and Expense Policy"],
+    "expectedKeywords": ["$350"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "expense-approval",
+    "question": "Who has to approve a $3,000 expense?",
+    "asRole": "EMPLOYEE",
+    "expectedDocuments": ["Travel and Expense Policy"],
+    "expectedKeywords": ["director"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "eng-code-review",
+    "question": "How many approvals does a pull request need before merging?",
+    "asRole": "ENGINEERING",
+    "expectedDocuments": ["Engineering Onboarding Guide"],
+    "expectedKeywords": ["two"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "eng-sev1",
+    "question": "What is the acknowledgement time for a SEV1 incident?",
+    "asRole": "ENGINEERING",
+    "expectedDocuments": ["Engineering Onboarding Guide"],
+    "expectedKeywords": ["15 minutes"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "hr-l5-band",
+    "question": "What is the salary range for an L5 Senior Software Engineer?",
+    "asRole": "HR",
+    "expectedDocuments": ["Compensation Guidelines"],
+    "expectedKeywords": ["160,000", "205,000"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "finance-accrual",
+    "question": "What is the threshold for accruing unbilled expenses at quarter end?",
+    "asRole": "FINANCE",
+    "expectedDocuments": ["Quarterly Close Procedures"],
+    "expectedKeywords": ["5,000"],
+    "shouldAnswer": true
+  },
+  {
+    "id": "rbac-salary-as-employee",
+    "question": "What is the salary range for an L5 Senior Software Engineer?",
+    "asRole": "EMPLOYEE",
+    "shouldAnswer": false,
+    "forbiddenDocuments": ["Compensation Guidelines"]
+  },
+  {
+    "id": "rbac-close-as-engineer",
+    "question": "What are the quarterly close steps and the journal entry approval limits?",
+    "asRole": "ENGINEERING",
+    "shouldAnswer": false,
+    "forbiddenDocuments": ["Quarterly Close Procedures"]
+  },
+  {
+    "id": "rbac-deploy-as-hr",
+    "question": "What is the production deploy window and canary process?",
+    "asRole": "HR",
+    "shouldAnswer": false,
+    "forbiddenDocuments": ["Engineering Onboarding Guide"]
+  },
+  {
+    "id": "out-of-scope",
+    "question": "What is the capital of Australia?",
+    "asRole": "EMPLOYEE",
+    "shouldAnswer": false
+  }
+]

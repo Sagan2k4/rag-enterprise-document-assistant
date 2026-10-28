@@ -1,0 +1,93 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: rag-document-assistant
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/ragdb}
+    username: ${DB_USER:rag}
+    password: ${DB_PASSWORD:rag}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  flyway:
+    enabled: true
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      timeout: 500ms
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 25MB
+  ai:
+    google:
+      genai:
+        api-key: ${GOOGLE_GENERATIVE_AI_API_KEY:}
+        chat:
+          options:
+            model: ${GEMINI_CHAT_MODEL:gemini-3.5-flash}
+            temperature: 0.1
+        embedding:
+          api-key: ${GOOGLE_GENERATIVE_AI_API_KEY:}
+          text:
+            options:
+              model: gemini-embedding-001
+              # pgvector column is vector(1536) — keep these in sync or change the migration
+              dimensions: 1536
+    model:
+      image: none
+      audio:
+        speech: none
+        transcription: none
+      moderation: none
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+rag:
+  jwt:
+    # Must be at least 32 bytes. Override with JWT_SECRET in every real environment.
+    secret: ${JWT_SECRET:dev-only-secret-change-me-please-0123456789abcdef}
+    expiration-minutes: 480
+  chunking:
+    max-tokens: 400
+    overlap-tokens: 60
+  retrieval:
+    top-k: 6
+    candidate-k: 20
+    rrf-k: 60
+    min-similarity: 0.20
+  embedding:
+    batch-size: 64
+  cache:
+    enabled: true
+    ttl: 30m
+  # USD per 1M tokens — update when switching models
+  pricing:
+    chat-input-per-million: 0.30
+    chat-output-per-million: 2.50
+    embedding-per-million: 0.15
+  seed:
+    users: ${SEED_USERS:true}
+    sample-docs: ${SEED_SAMPLE_DOCS:true}
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+      - http://localhost:3000
+
+logging:
+  level:
+    com.enterprise.rag: INFO
